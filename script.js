@@ -1,3 +1,7 @@
+window.onload = function (){
+
+}
+
 let numberPixels = 5;
 
 for (let pixelRows = 0; pixelRows < numberPixels; pixelRows += 1) {
@@ -46,3 +50,21 @@ firstPalette.addEventListener('click', getFirstPaletteColor);
 secondPalette.addEventListener('click', getSecondPaletteColor);
 thirdPalette.addEventListener('click', getThirdPaletteColor);
 fourthPalette.addEventListener('click', getFourthPaletteColor);
+
+let getPixels = document.getElementsByClassName('pixel');
+for(let index = 0; index < getPixels.length; index += 1){
+  getPixels[index].addEventListener('click', function(){chosenPixel(getPixels[index])});
+}
+
+
+function chosenPixel(pixel){
+  if(firstPalette.className === 'color selected'){
+    pixel.style.backgroundColor = 'black';
+  } else if(secondPalette.className === 'color selected'){
+    pixel.style.backgroundColor = 'darkblue';
+  } else if(thirdPalette.className === 'color selected'){
+    pixel.style.backgroundColor = 'darkgreen';
+  } else if(fourthPalette.className === 'color selected'){
+    pixel.style.backgroundColor = 'yellow';
+  }
+}
