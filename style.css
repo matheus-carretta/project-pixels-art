@@ -23,3 +23,19 @@
 .pixel {
     background-color: white;
 }
+
+#pixel-board {
+    border: 1px solid black;
+    display: table;
+}
+
+.pixel-row {
+    display: table-row;
+}
+
+.pixel {
+    display: table-cell;
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+}
