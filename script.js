@@ -56,7 +56,6 @@ for(let index = 0; index < getPixels.length; index += 1){
   getPixels[index].addEventListener('click', function(){chosenPixel(getPixels[index])});
 }
 
-
 function chosenPixel(pixel){
   if(firstPalette.className === 'color selected'){
     pixel.style.backgroundColor = 'black';
@@ -68,3 +67,12 @@ function chosenPixel(pixel){
     pixel.style.backgroundColor = 'yellow';
   }
 }
+
+function clearBoard(){
+  for(let index = 0; index < (numberPixels * numberPixels); index += 1){
+    getPixels[index].style.backgroundColor = 'white';
+  }
+}
+
+let clearButton = document.getElementById('clear-board');
+clearButton.addEventListener('click', clearBoard);
