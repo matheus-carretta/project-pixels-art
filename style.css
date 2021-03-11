@@ -4,22 +4,6 @@
   padding: 40px;
 }
 
-#black {
-  background-color: black;
-}
-
-#blue {
-  background-color: darkblue;
-}
-
-#green {
-  background-color: darkgreen;
-}
-
-#yellow {
-  background-color: yellow;
-}
-
 .pixel {
   background-color: white;
   display: table-cell;

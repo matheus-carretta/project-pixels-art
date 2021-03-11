@@ -1,3 +1,10 @@
+window.onload = function(){
+  firstPalette.style.backgroundColor = 'black';
+  secondPalette.style.backgroundColor = generateRandomColor();
+  thirdPalette.style.backgroundColor = generateRandomColor();
+  fourthPalette.style.backgroundColor = generateRandomColor();
+}
+
 function createBoard(numberPixels) {
   for (let pixelRows = 0; pixelRows < numberPixels; pixelRows += 1) {
     let pixelRow = document.createElement('div');
@@ -13,9 +20,9 @@ function createBoard(numberPixels) {
 createBoard (5);
 
 let firstPalette = document.getElementById('black');
-let secondPalette = document.getElementById('blue');
-let thirdPalette = document.getElementById('green');
-let fourthPalette = document.getElementById('yellow');
+let secondPalette = document.getElementById('secondPalette');
+let thirdPalette = document.getElementById('thirdPalette');
+let fourthPalette = document.getElementById('fourthPalette');
 
 // Achei a função neste site: https://www.w3schools.com/howto/howto_js_remove_class.asp
 function removeSelectedClass() {
@@ -25,22 +32,22 @@ function removeSelectedClass() {
 
 function getFirstPaletteColor() {
   removeSelectedClass();
-  firstPalette.className += firstPalette.className = ' selected';
+  firstPalette.classList.add('selected');
 }
 
 function getSecondPaletteColor(){
   removeSelectedClass();
-  secondPalette.className += secondPalette.className = ' selected';
+  secondPalette.classList.add('selected');
 }
 
 function getThirdPaletteColor(){
   removeSelectedClass();
-  thirdPalette.className += thirdPalette.className = ' selected';
+  thirdPalette.classList.add('selected');
 }
 
 function getFourthPaletteColor(){
   removeSelectedClass();
-  fourthPalette.className += fourthPalette.className = ' selected';
+  fourthPalette.classList.add('selected');
 }
 
 firstPalette.addEventListener('click', getFirstPaletteColor);
@@ -57,15 +64,8 @@ function eventListenerPixels(){
 eventListenerPixels();
 
 function chosenPixel(pixel){
-  if(firstPalette.className === 'color selected'){
-    pixel.style.backgroundColor = 'black';
-  } else if(secondPalette.className === 'color selected'){
-    pixel.style.backgroundColor = 'darkblue';
-  } else if(thirdPalette.className === 'color selected'){
-    pixel.style.backgroundColor = 'darkgreen';
-  } else if(fourthPalette.className === 'color selected'){
-    pixel.style.backgroundColor = 'yellow';
-  }
+  let selectedClass = document.querySelector('.selected');
+  pixel.style.backgroundColor = selectedClass.style.backgroundColor;
 }
 
 function clearBoard(){
@@ -97,3 +97,8 @@ generateBoard.addEventListener('click', function(){
     generateDynamicBoard(inputBoardSize.value);
   }
 })
+
+function generateRandomColor(){
+  let randomColor = 'rgb(' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ')';
+  return randomColor;
+}
