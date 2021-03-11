@@ -1,7 +1,3 @@
-window.onload = function (){
-  
-}
-
 function createBoard(numberPixels) {
   for (let pixelRows = 0; pixelRows < numberPixels; pixelRows += 1) {
     let pixelRow = document.createElement('div');
@@ -73,9 +69,9 @@ function chosenPixel(pixel){
 }
 
 function clearBoard(){
-  let numberPixels = document.querySelectorAll('.pixel-row').length;
-  for(let index = 0; index < (numberPixels * numberPixels); index += 1){
-    getPixels[index].style.backgroundColor = 'white';
+  let numberPixels = document.getElementsByClassName('pixel');
+  for(let index = 0; index < numberPixels.length; index += 1){
+    numberPixels[index].style.backgroundColor = 'white';
   }
 }
 
@@ -86,7 +82,7 @@ let generateBoard = document.getElementById('generate-board');
 let inputBoardSize = document.getElementById('board-size');
 generateBoard.addEventListener('click', function(){
   if(inputBoardSize.value === ''){
-    alert('Board inválido');
+    alert('Board inválido!');
   } else {
     document.getElementById('pixel-board').innerHTML = '';
     createBoard (inputBoardSize.value);
