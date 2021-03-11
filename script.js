@@ -1,10 +1,8 @@
 window.onload = function (){
-
+  
 }
 
-let numberPixels = 5;
-
-function createBoard() {
+function createBoard(numberPixels) {
   for (let pixelRows = 0; pixelRows < numberPixels; pixelRows += 1) {
     let pixelRow = document.createElement('div');
     pixelRow.className = 'pixel-row';
@@ -16,7 +14,7 @@ function createBoard() {
     }
   }
 }
-createBoard ();
+createBoard (5);
 
 let firstPalette = document.getElementById('black');
 let secondPalette = document.getElementById('blue');
@@ -54,10 +52,13 @@ secondPalette.addEventListener('click', getSecondPaletteColor);
 thirdPalette.addEventListener('click', getThirdPaletteColor);
 fourthPalette.addEventListener('click', getFourthPaletteColor);
 
-let getPixels = document.getElementsByClassName('pixel');
-for(let index = 0; index < getPixels.length; index += 1){
-  getPixels[index].addEventListener('click', function(){chosenPixel(getPixels[index])});
+function eventListenerPixels(){
+  let getPixels = document.getElementsByClassName('pixel');
+  for(let index = 0; index < getPixels.length; index += 1){
+    getPixels[index].addEventListener('click', function(){chosenPixel(getPixels[index])});
+  }
 }
+eventListenerPixels();
 
 function chosenPixel(pixel){
   if(firstPalette.className === 'color selected'){
@@ -72,6 +73,7 @@ function chosenPixel(pixel){
 }
 
 function clearBoard(){
+  let numberPixels = document.querySelectorAll('.pixel-row').length;
   for(let index = 0; index < (numberPixels * numberPixels); index += 1){
     getPixels[index].style.backgroundColor = 'white';
   }
@@ -79,3 +81,15 @@ function clearBoard(){
 
 let clearButton = document.getElementById('clear-board');
 clearButton.addEventListener('click', clearBoard);
+
+let generateBoard = document.getElementById('generate-board');
+let inputBoardSize = document.getElementById('board-size');
+generateBoard.addEventListener('click', function(){
+  if(inputBoardSize.value === ''){
+    alert('Board inválido');
+  } else {
+    document.getElementById('pixel-board').innerHTML = '';
+    createBoard (inputBoardSize.value);
+    eventListenerPixels();
+  }
+})
