@@ -1,10 +1,3 @@
-window.onload = function(){
-  firstPalette.style.backgroundColor = 'black';
-  secondPalette.style.backgroundColor = generateRandomColor();
-  thirdPalette.style.backgroundColor = generateRandomColor();
-  fourthPalette.style.backgroundColor = generateRandomColor();
-}
-
 function createBoard(numberPixels) {
   for (let pixelRows = 0; pixelRows < numberPixels; pixelRows += 1) {
     let pixelRow = document.createElement('div');
@@ -102,3 +95,8 @@ function generateRandomColor(){
   let randomColor = 'rgb(' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ')';
   return randomColor;
 }
+
+firstPalette.style.backgroundColor = 'black';
+  secondPalette.style.backgroundColor = generateRandomColor();
+  thirdPalette.style.backgroundColor = generateRandomColor();
+  fourthPalette.style.backgroundColor = generateRandomColor();
