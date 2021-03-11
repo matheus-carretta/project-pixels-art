@@ -78,14 +78,22 @@ function clearBoard(){
 let clearButton = document.getElementById('clear-board');
 clearButton.addEventListener('click', clearBoard);
 
+function generateDynamicBoard (numberPixels){
+  document.getElementById('pixel-board').innerHTML = '';
+  createBoard (numberPixels);
+  eventListenerPixels();
+}
+
 let generateBoard = document.getElementById('generate-board');
 let inputBoardSize = document.getElementById('board-size');
 generateBoard.addEventListener('click', function(){
   if(inputBoardSize.value === ''){
     alert('Board inválido!');
+  } else if(inputBoardSize.value < 5){
+    generateDynamicBoard(5);
+  } else if(inputBoardSize.value > 50){
+    generateDynamicBoard(50);
   } else {
-    document.getElementById('pixel-board').innerHTML = '';
-    createBoard (inputBoardSize.value);
-    eventListenerPixels();
+    generateDynamicBoard(inputBoardSize.value);
   }
 })
